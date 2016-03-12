@@ -1,34 +1,69 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Basic Bootstrap Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="stylesheets/search-bar.css">
+	<meta charset="utf-8">
+	<title>Basic Bootstrap Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- Optional Bootstrap theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="stylesheets/search-bar.css">
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <div class="container">
-	<div class="row">
-        <div class="col-md-6">
-    		<h2>Custom search field</h2>
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
+	<table>
+		<tr>
+			<td>
+				<h2>Gender</h2>
+			</td>
+			<td>
+				<h2>Age</h2>
+			</td>
+			<td>
+				<h2>Vaccine Search</h2>			
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<select>
+					<option value="Any">Any</option>
+					<option value="Male">Female</option>
+					<option value="Female">Male</option>
+				</select>
+			</td>
+			<td>
+				<select>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</td>
+			<td>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+							<div id="custom-search-input">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control input-lg" placeholder="Buscar" />
+									<span class="input-group-btn">
+										<button class="btn btn-info btn-lg" type="button">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</td>
+		</tr>
+		<tr>
+			<!-- search result goes here -->
+		</tr>
+	</table>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
