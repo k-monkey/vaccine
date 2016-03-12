@@ -10,7 +10,9 @@
 	<link rel="stylesheet" href="stylesheets/list.css">
 </head>
 <body>
+	<div id="vaccine-view">
 	<table>
+		<tbody>
 		<tr>
 			<td>
 				<h2>Gender</h2>
@@ -31,7 +33,7 @@
 				</select>
 			</td>
 			<td>
-				<select>
+				<select id="age-selector">
 					<option value="4">4</option>
 					<option value="5">5</option>
 					<option value="6">6</option>
@@ -62,29 +64,34 @@
 				<tbody class="list">
 					<tr>
 						<td class="name">Jonny Stromberg</td>
-						<td class="born">1986</td>
+						<td class="born">4</td>
 					</tr>
 					<tr>
 						<td class="name">Jonas Arnklint</td>
-						<td class="born">1985</td>
+						<td class="born">5</td>
 					</tr>
 					<tr>
 						<td class="name">Martina Elm</td>
-						<td class="born">1986</td>
+						<td class="born">6</td>
 					</tr>
 					<tr>
 						<td class="name">Gustaf Lindqvist</td>
-						<td class="born">1983</td>
+						<td class="born">4</td>
 					</tr>
 				</tbody>
 			</table>
 		</tr>
+		</tbody>
 	</table>
+	</div>
 
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="/js/list.min.js"></script>
+	<script src="/js/underscore-min.js"></script>
+	<script src="/js/backbone-min.js"></script>
+	<script src="/js/main-view.js"></script>
 </body>
 </html>
