@@ -7,6 +7,7 @@
 	<!-- Optional Bootstrap theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="stylesheets/search-bar.css">
+	<link rel="stylesheet" href="stylesheets/list.css">
 </head>
 <body>
 	<table>
@@ -43,7 +44,7 @@
 
 							<div id="custom-search-input">
 								<div class="input-group col-md-12">
-									<input type="text" class="form-control input-lg" placeholder="Buscar" />
+									<input type="text" class="form-control input-lg search" placeholder="Search" />
 									<span class="input-group-btn">
 										<button class="btn btn-info btn-lg" type="button">
 											<i class="glyphicon glyphicon-search"></i>
@@ -57,7 +58,26 @@
 			</td>
 		</tr>
 		<tr>
-			<!-- search result goes here -->
+			<table>
+				<tbody class="list">
+					<tr>
+						<td class="name">Jonny Stromberg</td>
+						<td class="born">1986</td>
+					</tr>
+					<tr>
+						<td class="name">Jonas Arnklint</td>
+						<td class="born">1985</td>
+					</tr>
+					<tr>
+						<td class="name">Martina Elm</td>
+						<td class="born">1986</td>
+					</tr>
+					<tr>
+						<td class="name">Gustaf Lindqvist</td>
+						<td class="born">1983</td>
+					</tr>
+				</tbody>
+			</table>
 		</tr>
 	</table>
 
@@ -65,5 +85,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="/js/list.min.js"></script>
 </body>
 </html>
