@@ -6,7 +6,7 @@ function toTableRows(rawData) {
 				'age': rawData[idx]['age_from'],
 				'name': rawData[idx]['name'],
 				'dose': rawData[idx]['dose'][0] + ' of ' + rawData[idx]['dose'][1],
-				'description': rawData[idx]['description'],
+				'description': rawData[idx]['description']
 			});
 		}
 	}
@@ -23,12 +23,10 @@ var dummyData = [{'vaccineId': '1', 'age_from': 0, 'country_code': 'USA', 'name'
 
 
 var headerOptions = {
-  valueNames: [ 'age', 'name', 'dose', 'description']
-  //item: 'sample-row'
-  //item: '<tr><td class="age"></td><td class="name"></td><td class="dose"></td><td class="description"></td></tr>'
+  valueNames: [ 'age', 'name', 'dose']
 };
 
-var userList = new List('vaccine-view', headerOptions); // [{'age': 'b', 'name': 'a', 'dose': 'c', 'description': 'e'}]); // toTableRows(dummyData));
+var vaccineList = new List('vaccine-view', headerOptions); 
 
 var VaccineView = Backbone.View.extend({
     el: 'html', //root of the DOM //TODO: limit the view to vaccine-view div only
@@ -37,7 +35,7 @@ var VaccineView = Backbone.View.extend({
     },
 
     filterByAge:function(e){
-        userList.search(this.$('#age-selector').val(), ['age']);
+        vaccineList.search(this.$('#age-selector').val(), ['age']);
     }
 });
 
@@ -45,7 +43,7 @@ new VaccineView();
 
 var vaccineViewRows = toTableRows(dummyData);
 for (var idx in vaccineViewRows) {
-	userList.add(vaccineViewRows[idx]);
+	vaccineList.add(vaccineViewRows[idx]);
 }
 
-userList.remove('name', 'dummy');
+vaccineList.remove('name', 'dummy');

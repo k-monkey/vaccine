@@ -3,6 +3,11 @@ Edit on
 .list {
   font-family:sans-serif;
 }
+th {
+  padding:10px; 
+  border:solid 1px #eee;
+}
+
 td {
   padding:10px; 
   border:solid 1px #eee;
