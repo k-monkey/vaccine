@@ -14,68 +14,89 @@
 	<table>
 		<tbody>
 		<tr>
-			<td>
-				<h2>Gender</h2>
-			</td>
-			<td>
-				<h2>Age</h2>
-			</td>
-			<td>
-				<h2>Vaccine Search</h2>			
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<select>
-					<option value="Any">Any</option>
-					<option value="Male">Female</option>
-					<option value="Female">Male</option>
-				</select>
-			</td>
-			<td>
-				<select id="age-selector">
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-				</select>
-			</td>
-			<td>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
+			<td colspan=3>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<h2>Gender</h2>
+							</td>
+							<td>
+								<h2>Age</h2>
+							</td>
+							<td>
+								<h2>Vaccine Search</h2>			
+							</td>				
+						</tr>
+						<tr>
+							<td>
+								<select>
+									<option value="Any">Any</option>
+									<option value="Male">Female</option>
+									<option value="Female">Male</option>
+								</select>
+							</td>
+							<td>
+								<select id="age-selector">
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+								</select>
+							</td>
+							<td>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-6">
 
-							<div id="custom-search-input">
-								<div class="input-group col-md-12">
-									<input type="text" class="form-control input-lg search" placeholder="Search" />
-									<span class="input-group-btn">
-										<button class="btn btn-info btn-lg" type="button">
-											<i class="glyphicon glyphicon-search"></i>
-										</button>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>				
+											<div id="custom-search-input">
+												<div class="input-group col-md-12">
+													<input type="text" class="form-control input-lg search" placeholder="Search" />
+													<span class="input-group-btn">
+														<button class="btn btn-info btn-lg" type="button">
+															<i class="glyphicon glyphicon-search"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>				
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</td>
 		</tr>
 		<tr>
-			<table>
-				<thead>
-					<tr>
-						<th>Patient's Age</th>
-						<th>Vaccine</th>
-						<th>Dose</th>
-					</tr>
-				</thead>
-				<tbody class="list">
-					<tr id='sample-row'>
-						<td class="age">dummy</td>
-						<td class="name">dummy</td>
-						<td class="dose">dummy</td>
-					</tr>
-				</tbody>
-			</table>
+			<td>
+				<table>
+					<tbody>
+						<tr>
+							<td>USA</td>
+						</tr>
+						<tr>
+							<td>
+								<table>
+									<thead>
+										<tr>
+											<th>Patient's Age</th>
+											<th>Vaccine</th>
+											<th>Dose</th>
+										</tr>
+									</thead>
+									<tbody class="list">
+										<tr id='sample-row'>
+											<td class="age">dummy</td>
+											<td class="name">dummy</td>
+											<td class="dose">dummy</td>
+										</tr>
+									</tbody>
+								</table>				
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
 		</tr>
 		</tbody>
 	</table>
