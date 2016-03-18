@@ -29,6 +29,8 @@ var dummyData = {'USA': [{'vaccineCode': 'HepB1', 'age_from': 0, 'country_code':
 'dose': [2,3]}
 ]};
 
+var rawData = dummyData;
+
 var visibleTabs = {'default': 'USA', 'tab1': 'CHN'};
 var	columnNames = ["Age", "Vaccine", "Dose"];
 
@@ -57,19 +59,28 @@ function toTableHeaders(data) {
 	return headers;
 }
 
+/**
+Add a vaccine table into the given tableContainer.
+tableContainer: a <div> object in which we add the table
+tableId: the id of the table.
+countryCode: the country from which the data should be pulled.
+*/
+function addVaccineTable(tableContainer, tableId, countryCode) {
+	tableContainer.innerHTML = "<table id='" + tableId + "' class='display' cellspacing='0' width='100%'/>" +
+		toTableHeaders(rawData) + "</table>"; 
+	vaccineData = toTableRows(rawData[countryCode]);
+	$(document).ready(function() {
+	    $('#' + tableId).DataTable( {
+	        data: vaccineData,
+	        searching: false,
+	        paging: false,
+	    	ordering:  false
+	    });
+	} );
+} 
 
+addVaccineTable(document.getElementById('vaccine-tab-default'), 'vaccine-table-default', 'USA');
 
-document.getElementById('vaccine-view').innerHTML = toTableHeaders(dummyData);
-
-vaccineData = toTableRows(dummyData['USA']);
-$(document).ready(function() {
-    $('#vaccine-view').DataTable( {
-        data: vaccineData,
-        searching: false,
-        paging: false,
-    	ordering:  false
-    });
-} );
 
 //list of countries for which we display the vaccine view
 //we allow at most 3 countries
