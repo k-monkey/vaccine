@@ -5,11 +5,9 @@ function toTableRows(rawData) {
 			rows.push([
 				rawData[idx]['age_from'],rawData[idx]['name'],
 				rawData[idx]['dose'][0] + ' of ' + rawData[idx]['dose'][1]
-				//rawData[idx]['description']
 
 								,rawData[idx]['age_from'],rawData[idx]['name'],
 				rawData[idx]['dose'][0] + ' of ' + rawData[idx]['dose'][1],
-				//rawData[idx]['description']
 			]);
 		}
 	}
@@ -32,7 +30,7 @@ var dummyData = {'USA': [{'vaccineCode': 'HepB1', 'age_from': 0, 'country_code':
 ]};
 
 var visibleTabs = {'default': 'USA', 'tab1': 'CHN'};
-var	headerNames = ["Age", "Vaccine", "Dose"];
+var	columnNames = ["Age", "Vaccine", "Dose"];
 
 function toTableHeaders(data) {
 	var headers = "<thead>";
@@ -50,8 +48,8 @@ function toTableHeaders(data) {
 	headers += "<tr>";
 	for (tab in visibleTabs) {
 		if (visibleTabs[tab] in data) {
-			for (nameIdx in headerNames) {
-				headers += "<th>" + headerNames[nameIdx] + "</th>";
+			for (nameIdx in columnNames) {
+				headers += "<th>" + columnNames[nameIdx] + "</th>";
 			}
 		}
 	}
@@ -66,7 +64,10 @@ document.getElementById('vaccine-view').innerHTML = toTableHeaders(dummyData);
 vaccineData = toTableRows(dummyData['USA']);
 $(document).ready(function() {
     $('#vaccine-view').DataTable( {
-        data: vaccineData
+        data: vaccineData,
+        searching: false,
+        paging: false,
+    	ordering:  false
     });
 } );
 
