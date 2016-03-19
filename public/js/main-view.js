@@ -1,19 +1,3 @@
-function toTableRows(rawData) {
-	var rows = []
-	for (var idx in rawData) {
-		if (rawData[idx] != null) {
-			rows.push([
-				rawData[idx]['age_from'],rawData[idx]['name'],
-				rawData[idx]['dose'][0] + ' of ' + rawData[idx]['dose'][1]
-
-								,rawData[idx]['age_from'],rawData[idx]['name'],
-				rawData[idx]['dose'][0] + ' of ' + rawData[idx]['dose'][1],
-			]);
-		}
-	}
-	return rows;
-}
-
 var dummyData = {'USA': [{'vaccineCode': 'HepB1', 'age_from': 0, 'country_code': 'USA', 'name': 'Hepatitis B', 
 'description': 'Hepatitis B virus (chronic inflammation of the liver, life-long complications)', 
 'dose': [1,3]},
@@ -34,25 +18,34 @@ var rawData = dummyData;
 var visibleTabs = {'default': 'USA', 'tab1': 'CHN'};
 var	columnNames = ["Age", "Vaccine", "Dose"];
 
-function toTableHeaders(data) {
-	var headers = "<thead>";
 
-	//add country name as first level header
-	headers += "<tr>";
-	for (tab in visibleTabs) {
-		if (visibleTabs[tab] in data) {
-			headers += "<th colspan=3>" + visibleTabs[tab] + "</th>";
+function toTableRows(rawData, countryCode) {
+	var rows = []
+	if (countryCode in rawData) {
+		var data = rawData[countryCode];
+		for (var idx in data) {
+			if (data[idx] != null) {
+				rows.push([
+					data[idx]['age_from'],data[idx]['name'],
+					data[idx]['dose'][0] + ' of ' + data[idx]['dose'][1]
+				]);
+			}
 		}
 	}
-	headers += "</tr>";
+	return rows;
+}
+
+
+function toTableHeaders(data, countryCode) {
+	var headers = "<thead>";
+	headers += "<tr><th colspan=3>" + countryCode + 
+			"</th></tr>";
 
 	//add 2nd level headers
 	headers += "<tr>";
-	for (tab in visibleTabs) {
-		if (visibleTabs[tab] in data) {
-			for (nameIdx in columnNames) {
-				headers += "<th>" + columnNames[nameIdx] + "</th>";
-			}
+	if (countryCode in data) {
+		for (nameIdx in columnNames) {
+			headers += "<th>" + columnNames[nameIdx] + "</th>";
 		}
 	}
 	headers += "</thead>"; 
@@ -66,9 +59,9 @@ tableId: the id of the table.
 countryCode: the country from which the data should be pulled.
 */
 function addVaccineTable(tableContainer, tableId, countryCode) {
-	tableContainer.innerHTML = "<table id='" + tableId + "' class='display' cellspacing='0' width='100%'/>" +
-		toTableHeaders(rawData) + "</table>"; 
-	vaccineData = toTableRows(rawData[countryCode]);
+	tableContainer.innerHTML += "<table id='" + tableId + "' class='display' cellspacing='0' width='100%'/>" +
+		toTableHeaders(rawData, countryCode) + "</table>"; 
+	vaccineData = toTableRows(rawData, countryCode);
 	$(document).ready(function() {
 	    $('#' + tableId).DataTable( {
 	        data: vaccineData,
@@ -79,7 +72,11 @@ function addVaccineTable(tableContainer, tableId, countryCode) {
 	} );
 } 
 
-addVaccineTable(document.getElementById('vaccine-tab-default'), 'vaccine-table-default', 'USA');
+addVaccineTable(document.getElementById('vaccine-view'), 
+	'vaccine-table-0', 'USA');
+
+addVaccineTable(document.getElementById('vaccine-view'), 
+	'vaccine-table-1', 'CHN');
 
 
 //list of countries for which we display the vaccine view
