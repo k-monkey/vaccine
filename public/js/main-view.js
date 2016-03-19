@@ -95,3 +95,15 @@ var VaccineView = Backbone.View.extend({
 });
 
 new VaccineView();
+
+
+var TestView = Backbone.View.extend({
+    el: $('#test-view'),
+    initialize: function(){
+      var template = _.template( "<h1>haha</h1>", {} );
+      this.$el.html( template );
+    },
+});
+
+var testView = new TestView();
+testView.remove();
