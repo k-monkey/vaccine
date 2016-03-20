@@ -52,35 +52,6 @@ function toTableHeaders(data, countryCode) {
 	return headers;
 }
 
-/**
-Add a vaccine table into the given tableContainer.
-tableContainer: a <div> object in which we add the table
-tableId: the id of the table.
-countryCode: the country from which the data should be pulled.
-*/
-function addVaccineTable(tableContainer, tableId, countryCode) {
-	tableContainer.innerHTML += "<table id='" + tableId + "' class='display' cellspacing='0' width='100%'/>" +
-		toTableHeaders(rawData, countryCode) + "</table>"; 
-	vaccineData = toTableRows(rawData, countryCode);
-	$(document).ready(function() {
-	    $('#' + tableId).DataTable( {
-	        data: vaccineData,
-	        searching: false,
-	        paging: false,
-	    	ordering:  false
-	    });
-	} );
-} 
-
-/*
-addVaccineTable(document.getElementById('vaccine-view'), 
-	'vaccine-table-0', 'USA');
-
-addVaccineTable(document.getElementById('vaccine-view'), 
-	'vaccine-table-1', 'CHN');
-	*/
-
-
 //list of countries for which we display the vaccine view
 //we allow at most 3 countries
 var viewList = {'default-view': 'USA', '1st-view': null, '2nd-view': null};
@@ -97,19 +68,6 @@ var VaccinePanel = Backbone.View.extend({
 });
 
 new VaccinePanel();
-
-/*
-var TestView = Backbone.View.extend({
-    el: $('#test-view'),
-    initialize: function(){
-      var template = _.template( "<h1>haha</h1>", {} );
-      this.$el.html( template );
-    },
-});
-
-var testView = new TestView();
-testView.remove();
-*/
 
 var VaccineTab = Backbone.View.extend({
     initialize: function(){
