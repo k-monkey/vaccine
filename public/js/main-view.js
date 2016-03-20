@@ -59,11 +59,14 @@ var viewList = {'default-view': 'USA', '1st-view': null, '2nd-view': null};
 var VaccinePanel = Backbone.View.extend({
     el: 'html', //root of the DOM //TODO: limit the view to vaccine-view div only
     events: {
-        "change #age-selector": "filterByAge" 
+        "change #age-selector": "filterByAge",
+    	"change #add-country-selector": "addTabFromSelector" 
     },
-
     filterByAge:function(e){
         vaccineList.search(this.$('#age-selector').val(), ['age']);
+    },
+    addTabFromSelector: function() {
+    	addNewTab($('#add-country-selector').val());
     }
 });
 
