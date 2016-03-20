@@ -113,23 +113,8 @@ testView.remove();
 
 var VaccineTab = Backbone.View.extend({
     initialize: function(){
-    	this.render();
     },
-    render: function() {
-    	//add the vaccine tab for default country "USA"
-    	var containerId = "vaccine-tab-0";
-    	var countryCode = "USA";
-    	var tableId = "vaccine-table-0";
-
-    	/*
-    	var variables = {
-    		tab_container_id: containerId, 
-    		country_code: countryCode,
-    		vaccine_table_id: tableId};
-      	var template = _.template( $("#vaccine-tab-template").html(), variables );
-      	this.$el.html( template );
-      	*/
-
+    render: function(tableId, countryCode) {
 		vaccineData = toTableRows(rawData, countryCode);
 		$(document).ready(function() {
 		    $('#' + tableId).DataTable( {
@@ -145,14 +130,17 @@ var VaccineTab = Backbone.View.extend({
 //initiate the vaccine-view
 var VaccineView = Backbone.View.extend({
     el: $('#vaccine-view'),
+    variables: {},
     initialize: function(){
+    	this.variables = {tabCount: 0, tabList: []}; 
     	this.render();
     },
     render: function() {
-    	this.addTab(0, "USA");
+    	this.addTab("USA"); 	
     },
-    addTab: function(cId, countryCode) {
+    addTab: function(countryCode) {
     	//add the vaccine tab for default country "USA"
+    	var cId = this.variables.tabCount++;
     	var containerId = "vaccine-tab-" + cId;
     	var tableId = "vaccine-table-" + cId;
     	var variables = {
@@ -162,12 +150,14 @@ var VaccineView = Backbone.View.extend({
       	var template = _.template( $("#vaccine-tab-template").html());
       	this.$el.append( template(variables) );
 
-      	var defaultTab = new VaccineTab({el: $("#" + containerId)});
+      	var newTab = new VaccineTab({el: $("#" + containerId)});
+      	newTab.render(tableId, countryCode);
+      	this.variables.tabList.push(newTab);
     }
 });
 
 var testView = new VaccineView();
-//testView.addTab(1, "USA");
+testView.addTab("USA");
 
 //testView.remove();
 
