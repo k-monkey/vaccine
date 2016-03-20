@@ -72,18 +72,20 @@ function addVaccineTable(tableContainer, tableId, countryCode) {
 	} );
 } 
 
+/*
 addVaccineTable(document.getElementById('vaccine-view'), 
 	'vaccine-table-0', 'USA');
 
 addVaccineTable(document.getElementById('vaccine-view'), 
 	'vaccine-table-1', 'CHN');
+	*/
 
 
 //list of countries for which we display the vaccine view
 //we allow at most 3 countries
 var viewList = {'default-view': 'USA', '1st-view': null, '2nd-view': null};
 
-var VaccineView = Backbone.View.extend({
+var VaccinePanel = Backbone.View.extend({
     el: 'html', //root of the DOM //TODO: limit the view to vaccine-view div only
     events: {
         "change #age-selector": "filterByAge" 
@@ -94,9 +96,9 @@ var VaccineView = Backbone.View.extend({
     }
 });
 
-new VaccineView();
+new VaccinePanel();
 
-
+/*
 var TestView = Backbone.View.extend({
     el: $('#test-view'),
     initialize: function(){
@@ -107,3 +109,65 @@ var TestView = Backbone.View.extend({
 
 var testView = new TestView();
 testView.remove();
+*/
+
+var VaccineTab = Backbone.View.extend({
+    initialize: function(){
+    	this.render();
+    },
+    render: function() {
+    	//add the vaccine tab for default country "USA"
+    	var containerId = "vaccine-tab-0";
+    	var countryCode = "USA";
+    	var tableId = "vaccine-table-0";
+
+    	/*
+    	var variables = {
+    		tab_container_id: containerId, 
+    		country_code: countryCode,
+    		vaccine_table_id: tableId};
+      	var template = _.template( $("#vaccine-tab-template").html(), variables );
+      	this.$el.html( template );
+      	*/
+
+		vaccineData = toTableRows(rawData, countryCode);
+		$(document).ready(function() {
+		    $('#' + tableId).DataTable( {
+		        data: vaccineData,
+		        searching: false,
+		        paging: false,
+		    	ordering:  false
+		    });
+		} );    	
+    }
+});
+
+//initiate the vaccine-view
+var VaccineView = Backbone.View.extend({
+    el: $('#vaccine-view'),
+    initialize: function(){
+    	this.render();
+    },
+    render: function() {
+    	this.addTab(0, "USA");
+    },
+    addTab: function(cId, countryCode) {
+    	//add the vaccine tab for default country "USA"
+    	var containerId = "vaccine-tab-" + cId;
+    	var tableId = "vaccine-table-" + cId;
+    	var variables = {
+    		tab_container_id: containerId, 
+    		vaccine_table_id: tableId,
+    		country_code: countryCode};
+      	var template = _.template( $("#vaccine-tab-template").html());
+      	this.$el.append( template(variables) );
+
+      	var defaultTab = new VaccineTab({el: $("#" + containerId)});
+    }
+});
+
+var testView = new VaccineView();
+//testView.addTab(1, "USA");
+
+//testView.remove();
+
