@@ -82,6 +82,16 @@ var VaccineTab = Backbone.View.extend({
 		    	ordering:  false
 		    });
 		} );    	
+    },
+    events: {
+        "click .add-tab": "addTab",
+        "click .del-tab": "deleteTab",
+    },
+    addTab: function() {
+    	addNewTab("CHN");
+    },
+    deleteTab: function() {
+    	this.remove();
     }
 });
 
@@ -107,6 +117,9 @@ var VaccineView = Backbone.View.extend({
     		country_code: countryCode};
       	var template = _.template( $("#vaccine-tab-template").html());
       	this.$el.append( template(variables) );
+      	if (cId == 0) {
+      		this.$('.del-tab').remove();
+      	}
 
       	var newTab = new VaccineTab({el: $("#" + containerId)});
       	newTab.render(tableId, countryCode);
@@ -114,8 +127,9 @@ var VaccineView = Backbone.View.extend({
     }
 });
 
-var testView = new VaccineView();
-testView.addTab("USA");
+var vaccineView = new VaccineView();
 
-//testView.remove();
+function addNewTab(countryCode) {
+	vaccineView.addTab(countryCode);
+}
 
