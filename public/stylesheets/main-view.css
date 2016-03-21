@@ -1,0 +1,10 @@
+.tabLabel {
+	border: none;
+    table-layout: fixed;
+    width: 75%;
+}
+.tabButton {
+	border: none;
+    table-layout: fixed;
+    width: 25%;
+}
