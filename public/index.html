@@ -17,10 +17,7 @@
 				<div class="dropdown">
 				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Gender
 				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">Any</a></li>
-				    <li><a href="#">Female</a></li>
-				    <li><a href="#">Male</a></li>
+				  <ul class="dropdown-menu" id="gender-selector">
 				  </ul>
 				</div>
 			</div>
@@ -28,10 +25,7 @@
 				<div class="dropdown">
 				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Age
 				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">6</a></li>
+				  <ul class="dropdown-menu" id="age-selector">
 				  </ul>
 				</div>
 			</div>
@@ -39,10 +33,7 @@
 				<div class="dropdown">
 				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add A Country
 				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">USA</a></li>
-				    <li><a href="#">CHINA(PRC)</a></li>
-				    <li><a href="#">INDIA</a></li>
+				  <ul class="dropdown-menu" id="add-country-selector">
 				  </ul>
 				</div>
 			</div>
@@ -52,68 +43,6 @@
 				
 			</div>	
 		</div>
-	</div>
-
-
-	<div>
-	<table>
-		<tbody>
-		<tr>
-			<td colspan=3>
-				<table>
-					<tbody>
-						<tr>
-							<td>
-								<h2>Gender</h2>
-							</td>
-							<td>
-								<h2>Age</h2>
-							</td>
-							<td>
-								<h2>Vaccine Search</h2>			
-							</td>				
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option value="Any">Any</option>
-									<option value="Male">Female</option>
-									<option value="Female">Male</option>
-								</select>
-							</td>
-							<td>
-								<select id="age-selector">
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-								</select>
-							</td>
-							<td>
-								<select id="add-country-selector">
-									<option value="USA">USA</option>
-									<option value="CHN">CHINA(PRC)</option>
-								</select>	
-								+
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>	
-				<div id="vaccine-view1">			
-				</div>
-			</td>
-		</tr>
-		</tbody>
-	</table>
-	</div>
-
-	<div id="vaccine-view2" class="container">
-		<div class="row">
-
-		</div>			
 	</div>
 
 	<script type="text/template" id="vaccine-tab-template">
@@ -144,6 +73,22 @@
 				</thead>
 			</table>
 		</div>
+	</script>
+
+	<script type="text/template" id="dropdown-menu-template">
+		<div class="dropdown">
+		  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= title %>
+		  <span class="caret"></span></button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">USA</a></li>
+		    <li><a href="#">CHINA(PRC)</a></li>
+		    <li><a href="#">INDIA</a></li>
+		  </ul>
+		</div>	
+	</script>
+
+	<script type="text/template" id="dropdown-item-template">
+		<li><a href="#" data-name="<%= name %>"><%= name %></a></li>
 	</script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>

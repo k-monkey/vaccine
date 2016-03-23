@@ -18,6 +18,74 @@ var rawData = dummyData;
 var visibleTabs = {'default': 'USA', 'tab1': 'CHN'};
 var	columnNames = ["Age", "Vaccine", "Dose"];
 
+Item = Backbone.Model.extend({});
+ItemCollection = Backbone.Collection.extend({
+    model: Item
+});
+
+ItemListView = Backbone.View.extend({
+    tagName: "ul",
+    clickAction: null,
+    events: {
+        "click a": "clicked"
+    },
+    initialize: function(options) {
+    	this.clickAction = options.clickAction;
+    },
+
+    clicked: function(e){
+        e.preventDefault();
+        var name = $(e.currentTarget).data("name");
+        if (this.clickAction == null ) {
+        	alert(name);
+        }
+        else {
+        	this.clickAction(name);
+        }
+    },
+    
+    render: function(){
+    	var template = _.template($("#dropdown-item-template").html());
+    	var el = $(this.el);
+        this.collection.each(function(model){
+            var html = template(model.toJSON());
+            el.append(html);
+        });
+    }
+});
+
+var genders = new ItemCollection([
+    {name: "Any"},
+    {name: "Female"},
+    {name: "Male"}
+]);
+var genderSelector = new ItemListView({el: $("#gender-selector"), 
+	collection: genders});
+genderSelector.render();
+
+var ages = new ItemCollection([
+    {name: "0"},
+    {name: "1"},
+    {name: "2"},
+    {name: "3"},
+    {name: "4"},
+    {name: "5"}   
+]);
+var ageSelector = new ItemListView({el: $("#age-selector"), 
+	collection: ages});
+ageSelector.render();
+
+var countries = new ItemCollection([
+    {name: "USA"},
+    {name: "CHN"},
+    {name: "IND"}
+]);
+var countrySelector = new ItemListView({el: $("#add-country-selector"), 
+	collection: countries, 
+	clickAction: addNewTab,
+});
+countrySelector.render();
+
 
 function toTableRows(rawData, countryCode) {
 	var rows = []
