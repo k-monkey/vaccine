@@ -119,17 +119,13 @@ function toTableRows(rawData, countryCode, filters) {
 }
 
 function isFiltered(filters, data) {
-	console.log("point 1");
 	if (filters == null) {
-		console.log("point 2");
 		return false;
 	}
 	else {
 		for (var fieldName in filters) {
-			console.log("point 3 " + fieldName);
 			switch (fieldName.toLowerCase()) {
 				case 'age': 
-					console.log("point 4 " + filters[fieldName]);
 					if (data['age_from'] > filters[fieldName]) {
 						return true;
 					}
@@ -180,21 +176,17 @@ var VaccineTab = Backbone.View.extend({
 		var tableId = this.options.tableId;
 		$(document).ready(function() {
 		    var table = $('#' + tableId).DataTable( {
-		        //data: vaccineData,
+		    	data: vaccineData,
 		        searching: false,
 		        paging: false,
 		    	ordering:  false
 		    });
-		    table.clear();
-		    table.rows.add(vaccineData).draw();
-		} );    	
+		});    	
     },
     redraw: function(tableId, countryCode) {
-    	console.log("tab rendering " + Object.keys(this.options) );
 		vaccineData = toTableRows(rawData, 
 				this.options.countryCode, 
 				this.options.filters);
-		console.log("tab rendering2 " + vaccineData );
 		var tableId = this.options.tableId;
 		var table = $('#' + tableId).DataTable();    
 		table.clear();
