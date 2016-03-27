@@ -21,7 +21,7 @@
 	            </div>
 	        </div>
 	</header>
-	<div class='container'>
+	<div class='container bg-primary'>
 		<div class='row'>
 			<div class='col-md-4'>
 				<div class="dropdown">
@@ -63,7 +63,7 @@
 	</div>
 
 	<script type="text/template" id="vaccine-tab-template">
-		<td id=<%= tab_container_id %> class="col-md-3">
+		<div id=<%= tab_container_id %> class="col-md-3">
 			<table id=<%= vaccine_table_id %>>
 				<thead>
 					<tr>
@@ -71,14 +71,16 @@
 							<table style="border:none">
 								<col style="width:75%">
         						<col style="width:25%">
-								<tbody><tr>
+								<tbody>
+									<tr>
 									<td class="tabLabel">
-										<h3><%= country_code %></h3>
+											<%= country_code %>
 									</td>
 									<td class="tabButton">
-										<button class="del-tab">x</button>		
+										<button class="btn-primary del-tab">x</button>
 									</td>				
-								</tr></tbody>
+									</tr>
+								</tbody>
 							</table>
 						</th>
 					</tr>
@@ -89,7 +91,7 @@
 					</tr>					
 				</thead>
 			</table>
-		</td>
+		</div>
 	</script>
 
 	<script type="text/template" id="dropdown-menu-template">

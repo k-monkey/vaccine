@@ -1,10 +1,26 @@
 .tabLabel {
 	border: none;
     table-layout: fixed;
-    width: 75%;
+    width: 100%;
+    height: 40px;
 }
 .tabButton {
 	border: none;
     table-layout: fixed;
     width: 25%;
+    height: 20px;
+}
+.bg-primary {
+  background-color: rgb(0, 102, 204);
+  width: 100%;
+}
+.del-tab {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  border: none;
+  border-radius: 100px;
+  font-weight: 700;
+}
+.btn-primary {
+  color: #000000;
+  background-color: #f05f40;
 }
