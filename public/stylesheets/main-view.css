@@ -1,5 +1,6 @@
 .tabLabel {
 	border: none;
+	padding: 0px 0px;
     table-layout: fixed;
     width: 100%;
     height: 40px;

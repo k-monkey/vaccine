@@ -179,7 +179,8 @@ var VaccineTab = Backbone.View.extend({
 		    	data: vaccineData,
 		        searching: false,
 		        paging: false,
-		    	ordering:  false
+		    	ordering:  false,
+		    	info: false
 		    });
 		});    	
     },
