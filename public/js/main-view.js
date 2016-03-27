@@ -1,19 +1,11 @@
-var dummyData = {'USA': [{'vaccineCode': 'HepB1', 'age_from': 0, 'country_code': 'USA', 'name': 'Hepatitis B', 
-'description': 'Hepatitis B virus (chronic inflammation of the liver, life-long complications)', 
-'dose': [1,3]},
-{'vaccineCode': 'HepB2', 'age_from': 1, 'age_to': 2, 'country_code': 'USA', 'name': 'Hepatitis B', 
-'description': 'Hepatitis B virus (chronic inflammation of the liver, life-long complications)', 
-'dose': [2,3]}
-],
-'CHN': [{'vaccineCode': 'HepB1', 'age_from': 0, 'country_code': 'USA', 'name': 'Hepatitis B', 
-'description': 'Hepatitis B virus (chronic inflammation of the liver, life-long complications)', 
-'dose': [1,3]},
-{'vaccineCode': 'HepB2', 'age_from': 1, 'age_to': 2, 'country_code': 'USA', 'name': 'Hepatitis B', 
-'description': 'Hepatitis B virus (chronic inflammation of the liver, life-long complications)', 
-'dose': [2,3]}
-]};
-
 var rawData = dummyData;
+//convert year to month
+for (var key in dummyData) {
+	var vac = dummyData[key];
+	for (var idx in vac) {
+		vac[idx]['age_from'] = Math.round(vac[idx]['age_from']*12);
+	}
+}
 
 var visibleTabs = {'default': 'USA', 'tab1': 'CHN'};
 var	columnNames = ["Age", "Vaccine", "Dose"];
