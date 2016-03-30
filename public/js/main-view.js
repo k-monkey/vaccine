@@ -174,6 +174,12 @@ var VaccineTab = Backbone.View.extend({
 		    	ordering:  false,
 		    	info: false
 		    });
+		    table.rows(function ( idx, data, node ) {
+		    	console.log('data=' + idx + ' ' + data[1]);
+        		return data[1] === 'N/A' ?
+            		true : false;
+    		}).nodes().to$().addClass( 'vaccine-not-avail' );
+    		table.draw();
 		});    	
     },
     redraw: function(tableId, countryCode) {

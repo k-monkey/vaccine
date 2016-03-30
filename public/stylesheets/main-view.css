@@ -25,3 +25,6 @@
   color: #000000;
   background-color: #f05f40;
 }
+.vaccine-not-avail {
+    background-color: rgb(0,204,0);
+}
