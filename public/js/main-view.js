@@ -73,8 +73,7 @@ ageSelector.render();
 
 var countries = new ItemCollection([
     {name: "USA"},
-    {name: "CHN"},
-    {name: "IND"}
+    {name: "CHN"}
 ]);
 var countrySelector = new ItemListView({el: $("#add-country-selector"), 
 	collection: countries, 
