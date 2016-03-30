@@ -63,7 +63,8 @@ var ages = new ItemCollection([
     {name: "2"},
     {name: "3"},
     {name: "4"},
-    {name: "5"}   
+    {name: "5"},
+    {name: "6"}     
 ]);
 var ageSelector = new ItemListView({el: $("#age-selector"), 
 	collection: ages,
@@ -82,7 +83,6 @@ var countrySelector = new ItemListView({el: $("#add-country-selector"),
 countrySelector.render();
 
 function filterByGender(gender) {
-	alert("filter by" + gender);
 	vaccineView.filterByGender(gender);
 }
 
