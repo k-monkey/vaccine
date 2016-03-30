@@ -26,5 +26,8 @@
   background-color: #f05f40;
 }
 .vaccine-not-avail {
-    background-color: rgb(0,204,0);
+    background-color: rgb(0,204,0) !important;
+}
+table.dataTable tbody tr {
+	height: 45px;
 }
