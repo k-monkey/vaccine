@@ -260,8 +260,6 @@ var VaccineView = Backbone.View.extend({
     }
 });
 
-//var vaccineView = new VaccineView();
-
 function addNewTab(countryCode) {
 	vaccineView.addTab(countryCode);
 }

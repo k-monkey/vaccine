@@ -31,3 +31,8 @@
 table.dataTable tbody tr {
 	height: 45px;
 }
+table.vaccine-table {
+  text-align:center;
+  width: 40%;
+}
+
