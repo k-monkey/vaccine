@@ -176,7 +176,6 @@ var VaccineTab = Backbone.View.extend({
     			//	{ "width": "60px", "targets": 1 }]
 		    });
 		    table.rows(function ( idx, data, node ) {
-		    	console.log('data=' + idx + ' ' + data[1]);
         		return data[1] === 'N/A' ?
             		true : false;
     		}).nodes().to$().addClass('vaccine-not-avail');
@@ -261,9 +260,49 @@ var VaccineView = Backbone.View.extend({
     }
 });
 
-var vaccineView = new VaccineView();
+//var vaccineView = new VaccineView();
 
 function addNewTab(countryCode) {
 	vaccineView.addTab(countryCode);
 }
 
+//initiate the CarouselView
+var CarouselView = Backbone.View.extend({
+    el: $('#myCarousel'),
+    options: {
+        slideSeq: 0,
+        slideList: []
+    },
+    initialize: function(){
+        this.options = {slideSeq: 0, slideList: []}; 
+        this.render();
+    },
+    render: function() {
+        this.addSlide("slide1", "USA");
+        this.addSlide("slide2", "CHN");      
+    },
+    addSlide: function(slideId, countryCode) {
+        //add the vaccine tab for default country "USA"
+        var cId = this.options.slideSeq++;
+        var containerId = "vaccine-slide-" + cId;
+        var tableId = "slide-table-" + cId;
+        var variables = {
+            tab_container_id: containerId, 
+            vaccine_table_id: tableId,
+            country_code: countryCode
+        };
+        var template = _.template( $("#vaccine-tab-template").html());
+        console.log(slideId + " at length " + this.$('#slide1').html());
+        this.$('#' + slideId).html(template(variables));
+
+        var newTab = new VaccineTab({
+            'el': $("#" + containerId),
+            'tableId': tableId,
+            'countryCode': countryCode
+        });
+        newTab.render();
+        this.options.slideList.push(newTab);
+    }
+});
+
+var carouselView = new CarouselView();
